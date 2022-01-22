@@ -1,7 +1,8 @@
+import 'package:doctor_appointzz/Views/Login/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Services/internet.dart';
-import 'Views/LogReg/LogReg.dart';
+
 
 void main() {
   runApp(const DoctorAppointzz());
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
     _internetChecker.connectionStatus();
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (context) => const LogReg()));
+          context, CupertinoPageRoute(builder: (context) => const Login()));
     });
   }
 

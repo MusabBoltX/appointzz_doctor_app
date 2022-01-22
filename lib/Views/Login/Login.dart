@@ -1,4 +1,4 @@
-import 'package:doctor_appointzz/Views/SignUp/SignUp.dart';
+import 'package:doctor_appointzz/Views/HomeScreen/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -85,7 +85,7 @@ class _LoginState extends State<Login> {
                               controller: emailController,
                               cursorColor: const Color.fromRGBO(7, 78, 99, 0.7),
                               decoration: const InputDecoration(
-                                hintText: 'Email',
+                                  hintText: 'Email',
                                   enabledBorder: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 7)),
                             ),
@@ -137,31 +137,13 @@ class _LoginState extends State<Login> {
 
               Container(height: 25),
 
-              const LoginButton(),
-
-              Container(height: 20),
-
-              Column(
-                children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: TextStyle(
-                      fontSize: 15
-                      // color: Color.fromRGBO(7, 78, 99, 0.8),
-                    ),
+              LoginButton(
+                tapAction: Navigator.pushReplacement(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const DoctorHomeScreen(),
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            CupertinoPageRoute(builder: (context) => const SignUp()));
-                      },
-                      child: const Text("\nSign up",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Color.fromRGBO(7, 78, 99, 0.8),
-                        ),
-                      )),
-                ],
+                ),
               ),
 
               Container(height: 40),
