@@ -1,11 +1,16 @@
 import 'dart:async';
 
 import 'package:doctor_appointzz/Views/Login/Login.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Services/internet.dart';
+import 'Views/HomeScreen/home_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const DoctorAppointzz());
 }
 
@@ -17,7 +22,7 @@ class DoctorAppointzz extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: true,
-      title: 'Flutter Demo',
+      title: 'Doctor Appointzz',
       home: HomePage(),
     );
   }
@@ -31,14 +36,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final InternetChecker _internetChecker = InternetChecker();
 
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (context) => const Login()));
+          context, CupertinoPageRoute(builder: (context) => const DoctorHomeScreen()));
     });
   }
 

@@ -1,5 +1,4 @@
 import 'package:doctor_appointzz/Views/HomeScreen/DoctorListCard/doctor_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DoctorHomeScreen extends StatefulWidget {
@@ -17,7 +16,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("Welcome Dr. Johnny",
+            Text("Welcome Doctor",
               style: Theme
                   .of(context)
                   .textTheme

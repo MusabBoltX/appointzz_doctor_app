@@ -38,6 +38,15 @@ dependencies:
   country_code_picker: ^2.0.1
   flutter_native_image:
   image_picker: ^0.8.4+4
+  jitsi_meet: ^4.0.0
+  shared_preferences: ^2.0.13
+
+  # Firebase Libraries
+  firebase_core: ^1.12.0
+  firebase_auth: ^3.3.7
+  firebase_database: ^9.0.6
+  cloud_firestore: ^3.1.8
+
 
 dev_dependencies:
   flutter_test:

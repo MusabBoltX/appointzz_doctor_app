@@ -1,3 +1,5 @@
+import 'package:doctor_appointzz/Views/HomeScreen/Appointment%20Room/appointment_room.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DoctorCard extends StatefulWidget {
@@ -73,12 +75,19 @@ class _DoctorCardState extends State<DoctorCard> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => const Meeting(),
+                        ),
+                      );
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(3)),
                     color: const Color.fromRGBO(7, 78, 99, 0.7),
                     child: const Text(
-                      'Start Appointment',
+                      'Appointment Room',
                       style: TextStyle(
                         color: Color.fromRGBO(231, 232, 225, 1),
                       ),
