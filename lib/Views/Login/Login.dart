@@ -1,156 +1,115 @@
-import 'package:doctor_appointzz/Views/HomeScreen/home_screen.dart';
+import 'package:doctor_appointzz/Services/ColorPicker.dart';
+import 'package:doctor_appointzz/Views/HomeScreen/Dentist/dent.dart';
+import 'package:doctor_appointzz/Views/Login/Login_Button.dart';
+import 'package:doctor_appointzz/Views/WaitingLobby/waitinglobby.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-import 'Login_Button.dart';
-
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginAs extends StatefulWidget {
+  const LoginAs({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _LoginAsState createState() => _LoginAsState();
 }
 
-class _LoginState extends State<Login> {
-  TextEditingController? passController;
-  TextEditingController? emailController;
+class _LoginAsState extends State<LoginAs> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            icon: const Icon(
-              Icons.navigate_before_rounded,
-              size: 35,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
-        title: Image.asset(
-          'assests/logo.png',
-          color: const Color.fromRGBO(231, 232, 225, 1),
-          scale: 4.3,
-        ),
-        centerTitle: true,
-        backgroundColor: const Color.fromRGBO(7, 78, 99, 0.8),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Center(
           child: Column(
-            children: <Widget>[
-              const Align(
-                child: Text("Log In",
-                    textScaleFactor: 1.0,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset("assests/REQUEST.png"),
+              Text(
+                "\nRequest Access\n\n",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                margin: const EdgeInsets.only(top: 10),
+                decoration: BoxDecoration(
+                  color: cleanWhite,
+                  border: Border.all(color: Colors.transparent),
+                  backgroundBlendMode: BlendMode.darken,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: DropdownButton(
+                  // iconEnabledColor: Colors.black54,
+                  iconSize: 35,
+                  hint: const Text(
+                    'Request Access As',
                     style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(7, 78, 99, 0.8),
-                      letterSpacing: 0.7,
-                    )),
-              ),
-
-              const SizedBox(
-                height: 40.00,
-              ),
-
-              // --- Text Field( Email ) --- //
-              Theme(
-                data: ThemeData(primaryColor: Colors.transparent),
-                child: SizedBox(
-                  height: 55,
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      elevation: 2,
-                      margin: const EdgeInsets.only(right: 10, left: 10),
-                      color: Colors.white,
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.mail,
-                              color: Color.fromRGBO(7, 78, 99, 0.7),
-                            ),
-                          ),
-                          SizedBox(
-                            // color: Colors.blue,
-                            width: MediaQuery.of(context).size.width * 0.65,
-                            child: TextField(
-                              maxLines: 1,
-                              selectionWidthStyle: BoxWidthStyle.tight,
-                              controller: emailController,
-                              cursorColor: const Color.fromRGBO(7, 78, 99, 0.7),
-                              decoration: const InputDecoration(
-                                  hintText: 'Email',
-                                  enabledBorder: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 7)),
-                            ),
-                          ),
-                        ],
-                      )),
-                ),
-              ),
-
-              Container(height: 25),
-
-              // --- Text Field( Password ) --- //
-              Theme(
-                data: ThemeData(primaryColor: Colors.transparent),
-                child: SizedBox(
-                  height: 55,
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      elevation: 2,
-                      margin: const EdgeInsets.only(right: 10, left: 10),
-                      color: Colors.white,
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.lock,
-                              color: Color.fromRGBO(7, 78, 99, 0.7),
-                            ),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.6,
-                            child: TextField(
-                              maxLines: 1,
-                              selectionWidthStyle: BoxWidthStyle.tight,
-                              controller: passController,
-                              cursorColor: const Color.fromRGBO(7, 78, 99, 0.7),
-                              decoration: const InputDecoration(
-                                  hintText: 'Password',
-                                  enabledBorder: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 7)),
-                            ),
-                          ),
-                        ],
-                      )),
-                ),
-              ),
-
-              Container(height: 25),
-
-              LoginButton(
-                tapAction: Navigator.pushReplacement(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) => const DoctorHomeScreen(),
+                      color: Colors.black54,
+                    ),
                   ),
+                  // Not necessary for Option 1
+                  value: _selectedLocation,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _selectedLocation = newValue.toString();
+                      // print(_selectedLocation);
+                    });
+                  },
+                  items: _locations.map((location) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        location,
+                        style: const TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      value: location,
+                    );
+                  }).toList(),
                 ),
               ),
-
-              Container(height: 40),
+              const SizedBox(height: 20),
+              LoginButton(
+                tapAction: () {
+                  if (_selectedLocation == null || _selectedLocation!.isEmpty) {
+                    Fluttertoast.showToast(msg: "Please select the doctor type");
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => WaitingLobby(
+                          doctorType: _selectedLocation,
+                          requestString: "requested",
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  final List<String> _locations = [
+    'Dentist',
+    'Child Specialist',
+    'Dermatology',
+    'General Physician',
+    'Gynaecology',
+    'Nutritionist',
+    'Psychological Therapy',
+  ]; // Option 2
+
+  String? _selectedLocation;
+
 }

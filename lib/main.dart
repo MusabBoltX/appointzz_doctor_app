@@ -21,28 +21,28 @@ class DoctorAppointzz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Doctor Appointzz',
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (context) => const DoctorHomeScreen()));
+          context, CupertinoPageRoute(builder: (context) => const LoginAs()));
     });
   }
 

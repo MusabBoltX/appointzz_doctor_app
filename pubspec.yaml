@@ -76,7 +76,10 @@ flutter:
     - assests/logo.png
     - asset/Images/doctor.png
     - asset/Images/
-    - asset/Images/report.png  # assets:
+    - asset/Images/report.png
+    - assests/REQUEST.png
+    - assests/waiting.png
+    - assests/access_denied.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

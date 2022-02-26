@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class LoginButton extends StatefulWidget {
   const LoginButton({Key? key, required this.tapAction}) : super(key: key);
-  final tapAction;
+  final Function()? tapAction;
 
   @override
   _LoginButtonState createState() => _LoginButtonState();
@@ -15,7 +15,7 @@ class _LoginButtonState extends State<LoginButton> {
 
     return SizedBox(
 
-      width: 190,
+      width: 220,
       height: 50,
       child: RaisedButton(
           color: const Color.fromRGBO(7, 78, 99, 0.7),
@@ -23,7 +23,7 @@ class _LoginButtonState extends State<LoginButton> {
 
         onPressed: widget.tapAction,
 
-        child: const Text('LOGIN', style: TextStyle(color: Colors.white, letterSpacing: 1),),
+        child: const Text('Request', style: TextStyle(color: Colors.white, letterSpacing: 1),),
 
       ),
     );

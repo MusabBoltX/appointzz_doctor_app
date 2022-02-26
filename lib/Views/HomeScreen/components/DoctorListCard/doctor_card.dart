@@ -1,4 +1,5 @@
-import 'package:doctor_appointzz/Views/HomeScreen/Appointment%20Room/appointment_room.dart';
+import 'package:doctor_appointzz/Services/ColorPicker.dart';
+import 'package:doctor_appointzz/Views/Appointment%20Room/appointment_room.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -69,6 +70,30 @@ class _DoctorCardState extends State<DoctorCard> {
                 ],
               ),
 
+              GestureDetector(
+                onTap: () {
+                  dialogueBox();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Mark as Complete',
+                      style: TextStyle(
+                        color: cleanDarkBlueGrey,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.check_circle_outline,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
               // -- Buttons -- //
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -114,10 +139,40 @@ class _DoctorCardState extends State<DoctorCard> {
       ],
     );
   }
+
+  Future dialogueBox() {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Mark as complete!'),
+          content:
+              const Text('Are you sure to mark this appointment as complete?'),
+          actions: [
+            FlatButton(
+              textColor: cleanDarkBlueGrey,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('CANCEL'),
+            ),
+            FlatButton(
+              textColor: cleanDarkBlueGrey,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('CONFIRM'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 class Constants {
   Constants._();
+
   static const double padding = 40;
   static const double avatarRadius = 40;
 }

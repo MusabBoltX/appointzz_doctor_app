@@ -1,5 +1,6 @@
-import 'package:doctor_appointzz/Views/HomeScreen/DoctorListCard/doctor_card.dart';
 import 'package:flutter/material.dart';
+
+import 'components/DoctorListCard/doctor_card.dart';
 
 class DoctorHomeScreen extends StatefulWidget {
   const DoctorHomeScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("Welcome Doctor",
+            Text("Hello Doctor!",
               style: Theme
                   .of(context)
                   .textTheme
